@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <span class="add-header "><span class="iconfont icon-shangpin1"></span>修改商品信息</span>
+    </div>
+</div>
+<hr class="add_hr">
+<input type="hidden" class="js_add_exchange" value="<?php echo $message;?>">
+<form class="form-horizontal" role="form" action="<?php echo site_url('change_exchange/index/').$flag.'/'.$offsert;?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="good_name" class="col-sm-2 col-xs-2 control-label">商品名称<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="good_name" id="good_name" placeholder="请输入商品名称" value="<?php echo set_value('good_name')?set_value('good_name'):$data->good_name; ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span class="register-span register-js-phone"><?php echo form_error('good_name'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="good_introduce" class="col-sm-2 col-xs-2 control-label">商品介绍<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <textarea class="form-control" rows="8" name="good_introduce" id="good_introduce" placeholder="请输入商品介绍"><?php echo set_value('good_introduce')?set_value('good_introduce'):$data->good_introduce; ?></textarea>
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-name"><?php echo form_error('good_introduce'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="need_integral" class="col-sm-2 col-xs-2 control-label">所需积分<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="need_integral" id="need_integral" placeholder="请输入所需积分" value="<?php echo set_value('need_integral')?set_value('need_integral'):$data->need_integral; ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-sex"><?php echo form_error('need_integral'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rest_count" class="col-sm-2 col-xs-2 control-label">商品数量<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="rest_count" id="rest_count" placeholder="请输入商品数量" value="<?php echo set_value('rest_count')?set_value('rest_count'):$data->rest_count; ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-ID_card"><?php echo form_error('rest_count'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="goods_image" class="col-sm-2 col-xs-2 control-label">上传照片<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5  manager_set_top">
+            <input type="file" name="goods_image" id="goods_image"  value="<?php echo set_value('goods_image'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-passeord2"><?php echo form_error('goods_image'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-xs-offset-6 col-sm-1 col-xs-1">
+            <button type="reset" class="btn btn-primary" onclick="exchangeResetBtn()">取消</button>
+        </div>
+        <div class="col-sm-1 col-xs-1">
+            <button type="submit" class="btn btn-danger">修改</button>
+        </div>
+    </div>
+</form>
+</body>
+<?php
+      }
+?>
+</html>

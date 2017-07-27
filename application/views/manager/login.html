@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>登陆界面</title>
+</head>
+<body>
+    <img src="application/views/img/login.jpg" class="register-img img-responsive">
+    <div class=" login-form col-sm-4 col-xs-12" >
+        <div class="row login-header" >
+            管理员登陆
+        </div>
+        <hr>
+        <div class="row" >
+            <input type="hidden" name="err_message" value="<?php echo $err_mess;?>" class="js_err_message">
+            <span class="register-span login-js-phone login_phone col-sm-offset-3 col-xs-offset-3" style="visibility: hidden">密码或手机号码不正确</span>
+        </div>
+        <form class="form-horizontal" role="form" action="manager_login" method="post">
+            <div class="form-group">
+                <label for="login_phone" class="col-sm-2 col-xs-2 control-label">Phone<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-5">
+                    <input type="text" class="form-control" name="login_phone" id="login_phone" placeholder="请输入手机号码" >
+                </div>
+                <div class="col-sm-5 col-xs-5">
+                    <span class="register-span register-js-phone"><?php echo form_error('login_phone'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="login_password" class="col-sm-2 col-xs-2 control-label">密码<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-5">
+                    <input type="password" class="form-control" name="login_password" id="login_password" placeholder="请输入密码">
+                </div>
+                <div class="col-sm-5 col-xs-5">
+                    <span  class="register-span register-js-password1"><?php echo form_error('login_password'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class=" col-sm-1 col-xs-1 col-sm-offset-9 col-xs-offset-9">
+                    <button type="submit" class="btn btn-danger">登陆</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script>
+    if($('.js_err_message').val() == 1){
+        $('.login-js-phone').css('visibility','visible');
+        $('.js_err_message').val('0');
+    }
+</script>
+
+</html>

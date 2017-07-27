@@ -1,0 +1,196 @@
+a{text-decoration: none; color: #000;}
+a:hover{text-decoration: none;}
+.navbar-brand{padding: 0px;}
+.navbar-default{border: none;}
+.navbar{padding-top: 15px;padding-bottom: 15px; margin-bottom: 0px;}
+#dh a{padding-left: 30px; font-size: 16px;}
+#dh a:hover{color: red;}
+.navbar-text{color: #777;}
+.navbar-text a{font-size: 12px;color: #777;text-decoration: none;}
+#navbarText a:hover{color: red;}
+/*列表页*/
+/*banner*/
+.listBanner{padding-left: 0px; padding-right: 0px;}
+/*list-connnet*/
+.listContent{padding-top: 40px;}
+ .listLeft .biaoti{margin-top: 0px; font-size: 20px; font-family: "楷体";}
+.listLeft{margin-bottom: 40px;}
+/*list-right*/
+.listLeft{padding-right: 50px;;}
+
+/*注册界面*/
+.register-span{color: #ff0000;font-size: 14px; height: 30px;line-height: 30px;}
+.register-img{ width: 100%; height: 100%; position: absolute;}
+.register-form{z-index: 1000; position: relative; margin-top: 100px;margin-left:55%; background:#e2d2b9; filter:alpha(opacity:60); opacity:0.6;  -moz-opacity:0.6;-khtml-opacity: 0.6;}
+.register-log{margin-left: 60%;font-size: 16px;}
+.register-header{font-size: 20px;}
+
+/*登陆界面*/
+.login-form{z-index: 1000; position: relative; margin-top: 50px;margin-left:35%;
+	background: #504227; filter:alpha(opacity:60); opacity:0.6;  -moz-opacity:0.6;-khtml-opacity: 0.6;color: #fff; }
+.login-log{margin-left: 60%;font-size: 16px;height: 34px;line-height: 34px;display: inline-block;}
+.login-header{font-size: 20px;text-align: center;}
+.login_phone{text-align: center;font-size: 16px}
+
+/*个人中心*/
+.personal{margin-top: 50px;}
+.personal_img{width: 100%; height: 100%;}
+.oneTitle{font-weight: bold;}
+.list-group-item{border: none;}
+.personal_left_bottom{margin-top: 10px;}
+.personal_right{background-color: #fff; position: relative;}
+.personal_right_header{border-left: 5px solid #df8a13; font-size: 20px; margin-top: 20px;}
+.personal .clicked{background-color: #df8a13;}
+.personal a.clicked:hover{background-color: #df8a13;}
+.vertical_center{height: 35px; line-height: 35px;}
+.personal_right_menberInfo_header{margin-top: 50px;}
+.resetPassword{margin-top: 80px;}
+.resetPassword_header{padding-top: 10px;font-size: 20px;display: inline-block}
+.resetPassword-content{margin-bottom: 30px;}
+.personal_orderList_header{border-bottom: 2px solid #eeeeee; margin-top: 60px;}
+.personal_orderList_header div{ padding: 4px;}
+table thead{background-color: #eee;}
+.orderList_header_active{border-bottom: 2px solid #df8a13;margin-bottom: -2px;}
+.orderList_table{margin-top: 30px;}
+.set-down{position: absolute;bottom: 0px;right: 10px;}
+.stored_value_header{border: 1px solid #eee; padding: 20px; margin: 50px 30px 40px 30px;}
+.stored_value_point,.stored_value_balance{height: 60px; line-height: 60px;}
+.stored_value_point{border-left: 1px solid #eee;}
+
+/*K客房服务*/
+.js_room_none{margin-left: 30%;}
+.showRoom{ margin-top: 30px; position: relative;}
+.js_room_none div:nth-child(2){padding-top: 25px;}
+.room_set_down{position: absolute;left: 500px;margin-top: 0px;}
+#room_ser{background-color: #ffffff; margin-top: 50px;}
+#room_ser hr{margin-bottom: 0px; margin-top: 0px;}
+.room_form_group{padding-top: 20px; padding-bottom: 20px;}
+.room_content{ margin-top: 20px;}
+.roo_order_header{ font-size: 20px; margin-top: 30px;}
+.order_room_message {margin-left: 110px; margin-top: 20px;}
+.order_room_content { margin-top: 10px;}
+.order_room_form{margin-top: 20px;}
+.room_order_img{margin-top: 55px;}
+
+/*优惠精选*/
+.showPreferential{margin-top: 20px; margin-left: 100px;margin-right: 100px;}
+.preferential-header{font-size: 20px;color: #a50000; font-weight: bold;}
+.preferential_img{border-right: 5px solid #a50000;}
+.showPreferential .col-xs-7, .showPreferential .col-sm-7, .showPreferential .col-md-7, .showPreferential .col-lg-7{  padding-right: 0px; padding-left: 0px; }
+.preferential_content{margin-bottom: 20px;border: 2px solid #e1e4e5; }
+ pre {white-space: pre-wrap;  word-wrap: break-word; background-color: #fff; border: none; padding: 0px;}
+.preferential_more{margin-top: 80px;}
+
+/*积分商城*/
+.js_good_img_height, .js_preferential_img_height, .listContent{margin-top: 30px; position: relative}
+.point_shopping_header, .show_good_header{font-size: 20px;color:#a50000;border-bottom: 3px solid #a50000;padding-bottom: 10px; }
+.ponit_shopping_need, .home_shopping_need{position: absolute; top: 300px; left: 120px; font-size: 20px; color: #a50000;}
+.show_good_header{margin-top: 30px;}
+.show_good_content{margin-top: 150px;}
+.show_good_introduct{font-size: 17px; padding-left: 80px; padding-top: 30px;}
+.point_set_down{position: absolute;left: 500px;margin-top: 0px;}
+.show_good_left_header{background-color: #a50000;color: #fff;height: 30px;line-height: 30px;border-radius: 5px; font-size: 17px}
+.show_good_balance{background-color: #e0e0e0;height: 25px; margin: 0px 16px; font-size: 15px;}
+.show_good_left_content{ border: 1px solid #e0e0e0; position: relative}
+.show_good_balance_span{padding-top: 20px; padding-bottom: 20px;}
+.show_good_left_content a{margin-bottom: 20px;}
+.show_good-content .col-sm-4, .show_good-content .col-xs-6, .show_good-content .col-md-4, .show_good-content .col-lg-4{padding: 0px;}
+.show_good_right_header{font-size: 28px;color:#a50000;}
+.show_good_right_content{ padding-top: 10px;}
+.show_good_right_content span{font-size: 18px;}
+.show_good_right_content div{margin-bottom: 10px;}
+.show_good_right-color{color: #a50000;}
+.show_good_right_all{border-left: 3px solid #a50000;margin-top: 10px; }
+.show_exchange_header{border-bottom: 3px solid #a50000; height: 50px; line-height: 50px; background-color: #f5f5f5;}
+.show_exchange_header span{font-size: 16px; color: #a50000; padding-left: 20px;}
+.point_exchange_header{padding-top: 50px; margin-bottom: 20px;}
+.nomal_state{border-bottom: 1px solid #328998; color: #328998;}
+.active_state{border-bottom: 1px solid #f1a758; color: #f1a758;}
+.show_exchange_content{padding-top: 10px;}
+.show_exchange_foot{margin-top: 20px;}
+
+/*主页*/
+.home_preferential_time{position: absolute; top: 200px; left: 120px; font-size: 20px; color: #a50000;}
+.home_list_span{font-size: 40px; color: #a50000;}
+.home_more{font-size: 16px; color: #a50000;}
+
+
+
+/*后台*/
+.north_header{margin-left:400px;font-size: 20px;font-family: "Adobe Arabic";font-weight: bold;color: #df8a13; margin-top: 40px;display: inline-block;}
+.north_img{position: absolute; width:auto;height: 100px; right: 0px;}
+.panel-title{font-size: 14px;!important;}
+.west_menu{overflow:auto;padding:10px 10px 0px 10px;margin-bottom: 0px;}
+.panel{margin-bottom: 0px;}
+.panel-body {padding-top: 0px;}
+.accordion .accordion-body{border: none;}
+.list_group{border: none; margin-bottom: 0px;}
+.manager_orderList_header{border-bottom: 2px solid #eeeeee; margin-top: 20px;}
+.manager_orderList_header div{ padding: 4px;}
+/*住房订单信息*/
+.room_orderlist_container{margin-right: 170px;}
+.manager_set_down{position:absolute;left: 500px;}
+.manager_set_top{padding-top: 12px;}
+.add-header{font-size: 20px;color: #df8a13;font-family: "Adobe Arabic";font-weight: bold; padding-left: 50px;margin-top: 10px;}
+.add_hr{margin-top: 0px;}
+/*优惠信息*/
+.textOver{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;max-width: 100px; }
+/*@media*/
+@media only screen and (max-width: 768px) {
+	.navbar{text-align: center; padding-bottom: 0px;padding-top: 0px;}
+	body{margin-top: 50px;}
+	.navbar-brand{padding-top: 7px;}
+	.navbar-brand img{height: 35px;}
+	.tubiao i{font-size: 30px;}
+	.footer2{ margin-top: 0px;}
+	.footer2 img{height: 35px;}
+	.footer3{font-size: 12px;text-align: center;}
+	/*列表页*/
+	.listLeft{padding-right: 0px;}
+	.biaoti{padding-top: 20px; padding-bottom: 10px; text-align: center;}
+	.mediaList li{padding-left: 20%;}
+	/*注册界面*/
+	.register-span{font-size: 12px; height: 30px;line-height: 30px;}
+	.register-form{margin-left: 0px; font-size: 12px; margin-top: 60px;}
+	.register-log{margin-left: 40%;font-size: 16px;}
+	.register-header{font-size: 20px;}
+	/*登陆界面*/
+	.login-form{margin-left: 0px; font-size: 12px; margin-top: 60px;}
+	.login_phone{font-size: 16px}
+	/*个人中心*/
+	.stored_value_header{padding: 0px; margin: 0px;font-size: 14px;}
+	.stored_value_point,.stored_value_balance{height: 56px; line-height: 56px;}
+	/*客房服务*/
+	.js_room_none{margin-left: 0px;}
+	.room_set_down{position: absolute;bottom: 10px;left: 80px;}
+	.order_room_message {margin-left: 0px; margin-top: 20px;}
+	.xs_left{margin-left: 80px;}
+	.room_order_img{margin-left: 50px;}
+	/*优惠精选*/
+	.showPreferential{margin-top: 20px; margin-left: 0px;margin-right: 0px;}
+	.preferential-header{font-size: 12px;}
+	.preferential_more{margin-top: 10px;}
+	.order_room_content { margin-top: 0px;}
+	.biaoti{padding-top: 0px; padding-bottom: 0px;}
+	.preferential_content hr{padding: 3px;margin: 0px;}
+	.preferential_span_size{font-size: 8px; margin-bottom: 8px;}
+	.preferential_span_size .iconfont{font-size: 8px;}
+	/*积分商城*/
+	.point_set_down{position: absolute;left: 80px;margin-top: 0px;}
+	.ponit_shopping_need{position: absolute; top: 75%; left: 30%; font-size: 14px; color: #a50000;}
+	.show_good_content{margin-top: 40px;}
+	.show_good_right_header{font-size: 16px;color:#a50000;}
+	.show_good_right_content{ padding-top: 0px;}
+	.show_good_right_content span{font-size: 14px;text-align: left;}
+	.show_good_right_content div{margin-bottom: 5px;}
+	.show_good_introduct{font-size: 14px; padding-left: 10px; padding-top: 10px;}
+	.xs-good_img{margin-top: 90px;}
+	.show_exchange_foot a{font-size: 2px; margin-left: 2px;}
+	.exchange_table tbody{font-size: 10px;}
+	/*主页*/
+	.home_shopping_need{position: absolute; top: 80%; left: 30%; font-size: 18px; color: #a50000;}
+	.listContent{margin-top: 0px;}
+	.home_list_span{font-size: 20px;}
+	.home_preferential_time{position: absolute; top: 75%; left: 26%; font-size: 16px; color: #a50000;}
+	.js_good_img_height{margin-left: 0px;}
+}

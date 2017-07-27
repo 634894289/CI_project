@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+    <div class="js_good_img_height">
+        <div class="container">
+            <div class="point_shopping_header">积分礼品</div>
+            <div class="js_good_img_height">
+                <?php foreach($data as $value):?>
+                <div class="col-xs-6 col-md-4" style="position: relative">
+                    <a href="javascript:void(0);" class="thumbnail" onclick="showOneGood('<?=$value->good_id?>')">
+                        <img src="<?php $arr = explode('/',$value->goods_image); echo base_url().'uploads/add_exchange/'.array_pop($arr);?>" class="img-responsive center-block" />
+                        <span class="ponit_shopping_need">所需积分：<?=$value->need_integral?></span>
+                    </a>
+                </div>
+                <?php endforeach ;?>
+            </div>
+        </div>
+    </div>
+    <div class="point_set_down"><?php echo $link;?></div>
+</body>
+<script>
+    JQuery(function () {
+        var imgHeight =  parseInt(JQuery('.js_good_img_height img:eq(0)').css('height'));
+        JQuery('.js_good_img_height img').css('height',imgHeight);
+    });
+    function showOneGood (data) {
+        top.location.href  ="http://[::1]/CI/show_good/index/"+data;
+    };
+</script>
+</html>

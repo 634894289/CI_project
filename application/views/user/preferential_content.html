@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: #eee;">
+<div class=" col-sm-offset-4 col-sm-5 col-md-5 col-lg-5 showRoom">
+    <div class="thumbnail">
+        <img src="<?php $arr = explode('/',$value->activity_image); echo base_url().'uploads/add_preferential/'.array_pop($arr);?>" class="img-responsive center-block" />
+        <div class="caption">
+            <div class="row room_content">
+                <div class="order_room_content row biaoti">
+                    <div class="col-xs-12 col-sm-12 text-center"><span class="preferential-header"><?=$value->activity_name?></span></div>
+                </div>
+                <hr>
+                <div class="order_room_content row">
+                    <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-kaishishijian">开始时间：</span></div>
+                    <div class="col-xs-5 col-sm-5 text-left js_order_price"><?=$value->activity_start?></div>
+                </div>
+                <div class="order_room_content row">
+                    <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-jieshushijian">结束时间：</span></div>
+                    <div class="col-xs-5 col-sm-5 text-left"><?=$value->activity_end?></div>
+                </div>
+                <div style="margin-top: 30px;">
+                    <div  style="background-color: #fff;">
+                        <span><?=$value->activity_message?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

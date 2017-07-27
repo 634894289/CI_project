@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的余额</title>
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body style="background-color: #eeeeee">
+<div class="container ">
+    <div class="row personal">
+        <div class="col-sm-3 col-xs-4 personal_left">
+            <div>
+                <img src="<?php echo base_url();?>application/views/img/c1.jpg" class="img-responsive personal_img" >
+            </div>
+            <div class="personal_left_bottom">
+                <div class="list-group text-center">
+                    <span class="list-group-item oneTitle"> <i class=" glyphicon glyphicon-globe"></i>个人中心</span>
+                    <a href="<?php echo site_url('point_order_list/index');?>" class="list-group-item">积分订单</a>
+                    <a href="<?php echo site_url('order_list/index/1/1');?>" class="list-group-item">住房订单</a>
+                    <a href="<?php echo site_url('stored_value/index/2/1');?>" class="list-group-item clicked">我的余额</a>
+                    <a href="<?php echo site_url('point/index/1/1');?>" class="list-group-item">我的积分</a>
+                    <span class="list-group-item oneTitle"> <i class="glyphicon glyphicon-user"></i>个人信息</span>
+                    <a href="<?php echo site_url('member_info/index');?>" class="list-group-item">个人资料</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-xs-8 js_personal_right personal_right">
+            <div class="js_personal_orderList">
+                <div class="personal_right_header">我的余额</div>
+                <div class="stored_value_header row">
+                    <div class="col-sm-2 col-xs-4"><img src="<?php echo base_url();?>application/views/img/stored_value.png" alt="..."></div>
+                    <div class="col-sm-3 col-xs-8 stored_value_balance">
+                        <span>可用余额：￥</span>
+                        <?php echo $_SESSION['balance'];?>
+                    </div>
+                    <div class="col-sm-7 stored_value_point text-center"><span>您的余额永不过期</span></div>
+                </div>
+                <div>
+                    <div class="personal_orderList_header row text-center">
+                        <div class="col-sm-4 col-xs-4 js_storedValue_one">余额明细</div>
+                        <div class="col-sm-4 col-xs-4 js_storedValue_two">余额支出</div>
+                        <div class="col-sm-4 col-xs-4 js_storedValue_three">余额收入</div>
+                    </div>
+                    <table class="table table-bordered table-hover text-center orderList_table">
+                        <thead>
+                        <tr>
+                            <th  class="text-center">日期</th>
+                            <th class="text-center">收/支情况</th>
+                            <th class="text-center">详细说明</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $value):?>
+                        <tr>
+                            <td><?=$value->balance_time?></td>
+                            <td><?=$value->balance_state?><?=$value->balance_num?></td>
+                            <td><?=$value->balance_explain?></td>
+                        </tr>
+                        <?php endforeach ;?>
+                        </tbody>
+                    </table>
+                    <div class="set-down"><?php echo $link;?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<input type="hidden" class="js_all" value="<?php if(!isset($_SESSION)){session_start();}echo isset($_SESSION['tabs_text'])?$_SESSION['tabs_text']:$message;?>">
+<div class="room_orderlist_container">
+    <table class="table table-bordered table-hover text-center orderList_table js_all_room">
+        <thead>
+        <tr>
+            <th  class="text-center">房号</th>
+            <th  class="text-center">价格</th>
+            <th  class="text-center">房型</th>
+            <th  class="text-center">房间图片</th>
+            <th class="text-center">楼层</th>
+            <th class="text-center">床型</th>
+            <th class="text-center">可住人数</th>
+            <th class="text-center">是否可以加床</th>
+            <th class="text-center">操作</th>
+            <th class="text-center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $value):?>
+        <tr>
+            <td><?=$value->room_id?></td>
+            <td><?=$value->house_price?></td>
+            <td><?=$value->room_type?></td>
+            <td class="text-center" style="position: relative">
+                <img  style="height: 30px; width: 50px; position: absolute;left: 50px;"src="<?php $arr = explode('/',$value->room_image); echo base_url().'uploads/add_room/'.array_pop($arr);?>" class="img-responsive" />
+            </td>
+            <td><?=$value->floor?></td>
+            <td><?=$value->bed_type?></td>
+            <td><?=$value->number?></td>
+            <td><?=$value->add_bed?></td>
+            <td><button type="button" class="btn btn-danger" onclick="all_roomDeleteBtn('<?=$value->room_id?>')">删除</button></td>
+            <td><button type="button" class="btn btn-primary" onclick="all_roomRestBtn('<?=$value->room_id?>')">详情</button></td>
+        </tr>
+        <?php endforeach ;?>
+        </tbody>
+    </table>
+    <div class="manager_set_down"><?php echo $link;?></div>
+</div>
+</body>
+<?php
+      }
+?>
+</html>

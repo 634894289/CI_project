@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <span class="add-header "><span class="iconfont icon-youhui2"></span>添加优惠信息</span>
+    </div>
+</div>
+<hr class="add_hr">
+<input type="hidden" class="js_add_preferential" value="<?php echo $message;?>">
+<form class="form-horizontal" role="form" action="<?php site_url('add_preferential')?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="activity_name" class="col-sm-2 col-xs-2 control-label">活动名称<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="activity_name" id="activity_name" placeholder="请输入活动名称" value="<?php echo set_value('activity_name'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span class="register-span register-js-phone"><?php echo form_error('activity_name'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="activity_message" class="col-sm-2 col-xs-2 control-label">活动内容<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <textarea class="form-control" rows="8" name="activity_message" id="activity_message" placeholder="请输入活动内容"><?php echo set_value('activity_message'); ?></textarea>
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-name"><?php echo form_error('activity_message'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="activity_start" class="col-sm-2 col-xs-2 control-label">活动开始时间<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="date" class="form-control" name="activity_start" id="activity_start" placeholder="请输入活动开始时间" value="<?php echo set_value('activity_start'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-sex"><?php echo form_error('activity_start'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="activity_end" class="col-sm-2 col-xs-2 control-label">活动结束时间<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="date" class="form-control" name="activity_end" id="activity_end" placeholder="请输入活动结束时间" value="<?php echo set_value('activity_end'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-ID_card"><?php echo form_error('activity_end'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="activity_image" class="col-sm-2 col-xs-2 control-label">上传照片<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5  manager_set_top">
+            <input type="file" name="activity_image" id="activity_image"  value="<?php echo set_value('activity_image'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-5">
+            <span  class="register-span register-js-passeord2"><?php echo form_error('activity_image'); ?></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-xs-offset-6 col-sm-1 col-xs-1">
+            <button type="submit" class="btn btn-danger">添加</button>
+        </div>
+    </div>
+</form>
+</body>
+<?php
+      }
+?>
+</html>

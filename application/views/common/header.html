@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+
+    <link href="<?php echo base_url();?>application/views/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_y4681jso24l8r529.css"/>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_rn9da7r65o7833di.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="<?php echo base_url();?>application/views/js/html5shiv.min.js"></script>
+    <script src="<?php echo base_url();?>application/views/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="">
+<input type="hidden" name="login_message" value="<?php if(!session_id()) session_start(); $login_mess = isset($_SESSION['nickname'])?$_SESSION['nickname']:1; echo $login_mess;?>" class="js_login_message">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" >
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" id="dh">
+                <li>
+                    <a href="<?php echo site_url('home');?>">首页</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('room_service/index');?>">客房服务</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('show_preferential/index');?>">优惠精选</a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('point_shopping/index');?>">积分商城</a>
+                </li>
+            </ul>
+            <p class="navbar-text navbar-right" id="navbarText">
+                <a href="<?php echo site_url('recharge');?>" class="navbar-link">
+                    <span class="iconfont icon-jiage"></span>&nbsp;&nbsp;充值
+                </a>&nbsp;&nbsp;|
+                <a href="<?php echo site_url('register');?>" class="navbar-link">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;注册
+                </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="<?php echo site_url('contact_us');?>" class="navbar-link">
+                    <span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;联系我们
+                </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="<?php echo site_url('login');?>" class="navbar-link js_logined">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<span>用户登陆</span>
+                </a>
+                <a href="<?php echo site_url('order_list/index/1/1');?>" class="navbar-link js_out" style="display: none;">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;<span class="register-span"><?php echo $login_mess;?></span>
+                </a>
+                <!--<a href="login/lg_out" class="js_exits js_out">注销</a>-->
+                <span class="js_exits js_out"  style="display: none;">退出</span>
+            </p>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+</body>
+    <script src="<?php echo base_url();?>application/views/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo base_url();?>application/views/js/user.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo base_url();?>application/views/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo base_url();?>application/views/js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        var JQuery=jQuery.noConflict(); ;
+        JQuery('.js_exits').click(function () {
+            var $url = "<?php echo site_url('login/lg_out');?>";
+            JQuery.ajax({
+                type:"post",
+                url:$url,
+                dataType:"text",
+                data:{flag: true},
+                success:function(data){
+                    location.href = "<?php echo site_url('login');?>";
+                    return true;
+                },
+                error:function(err){
+                    alert('Failed');
+                    return false;
+                }
+            });
+        });
+    </script>
+</html>

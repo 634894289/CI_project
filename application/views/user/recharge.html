@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['user_phone'])){
+            redirect(site_url('login'));
+        }
+        else{
+     ?>
+<body>
+<input type="hidden" class="js_recharge" value="<?php echo $message;?>">
+<form class="form-horizontal" role="form" action="<?php echo site_url('recharge/index')?>" method="post">
+    <div class="form-group">
+        <label for="money" class="col-sm-2 col-xs-3 control-label text-right">充值金额<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-9">
+            <input type="text" class="form-control" name="money" id="money" placeholder="请输入充值金额" value="<?php echo set_value('money'); ?>">
+        </div>
+        <div class="col-sm-5 col-xs-12 text-center">
+            <span class="register-span register-js-phone"><?php echo form_error('money'); ?></span>
+        </div>
+    </div>
+    <input type="hidden"  value="" id = "curr_time" name="curr_time">
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-xs-offset-6 col-sm-1 col-xs-1">
+            <button type="submit" class="btn btn-danger" >充值</button>
+        </div>
+    </div>
+</form>
+</body>
+    <?php
+        }
+    ?>
+<script>
+    JQuery(function () {
+        var currDate = new Date();
+        var currMonth = (currDate.getMonth() + 1)<10?'0'+ (currDate.getMonth() + 1):(currDate.getMonth() + 1);
+        var currData = currDate.getDate()<10?'0'+ currDate.getDate(): currDate.getDate();
+        var newData = currDate.getFullYear() + '-' + currMonth + '-' + currData;
+        JQuery('#curr_time').val(newData);
+        if(JQuery('.js_recharge').val() == 'success'){
+            alert('充值成功');
+        }else if (JQuery('.js_recharge').val() == 'false'){
+            alert('充值失败');
+        }
+    });
+</script>
+</html>

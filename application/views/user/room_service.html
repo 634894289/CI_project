@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客房服务</title>
+</head>
+<body style="background-color: #eee;" class="js_room_server ">
+    <div class="container">
+
+        <form class="form-horizontal" role="form" action="<?php site_url('show_room');?>" method="post" enctype="multipart/form-data" id = "room_ser">
+            <div class="form-group room_form_group">
+                <label class="col-sm-1 col-xs-12 control-label">价格：<span class="register-span"></span></label>
+                <div  class="col-sm-10 col-xs-12 manager_set_top">
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="prices" value="1" checked >不限</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="prices"  value="2" >150以下</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="prices"  value="3" >150-300</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="prices"  value="4" >300-400</div>
+                    <div class="col-sm-2 col-xs-4"> <input type="radio" name="prices"  value="5" >400以上</div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group room_form_group">
+                <label class="col-sm-1 col-xs-12 control-label">房型：<span class="register-span"></span></label>
+                <div  class="col-sm-11 col-xs-12 manager_set_top">
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="room_type" value="1" checked>不限</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="room_type" value="2" >经济型</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="room_type" value="3" >舒适型</div>
+                    <div class="col-sm-2 col-xs-4"> <input type="radio" name="room_type" value="4" >高档型</div>
+                    <div class="col-sm-2 col-xs-4"><input type="radio" name="room_type" value="5" >豪华型</div>
+                </div>
+            </div>
+        </form>
+
+        <iframe src="<?php echo site_url('show_room/index/1/1/1');?>" width="100%" height="100%" frameborder="0" id="show_room" name = "show_room" scrolling="no" onload="IframeLoadEND()">
+        </iframe>
+        <div style="display: none"  class="js_room_none row ">
+            <div class="col-sm-2 col-xs-3"><img src="<?php echo site_url();?>application/views/img/none.png" class="img-responsive"></div>
+            <div class="col-sm-10 col-xs-9"><span>亲，暂时无相关客房，请尝试更换搜索条件</span></div>
+        </div>
+    </div>
+</body>
+</html>

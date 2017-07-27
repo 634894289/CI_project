@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: #eee;">
+    <?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['user_phone'])){
+            redirect(site_url('login'));
+        }
+        else{
+     ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 col-xs-4 col-md-2 col-lg-2 show_good_content text-center">
+                <div class="show_good_left_header">积分商城</div>
+                <div class="show_good_left_content" style="background-color: #fff;">
+                    <div class="row">
+                        <div class="show_good_balance text-left">我的积分</div>
+                        <div class="show_good_balance_span show_good_right-color"><span>可兑换积分: </span><?=$_SESSION['odd_integral']?></div>
+                    </div>
+                    <div class="row ">
+                        <div class="show_good_balance text-left">订单</div>
+                        <div class="show_good_balance_span">订单数目<span>(</span><span class="show_good_right-color js_add_show_good_num"><?php if(!isset($_SESSION)) session_start(); echo $_SESSION['good_count'];?></span><span>)</span></div>
+                        <a  href="<?php echo site_url('point_exchange/index').'/'.intval($this->uri->segment(3));?>" class="btn btn-danger">订单结算</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-10 col-xs-8 col-md-10 col-lg-10">
+                <div class="show_good_header">商品详情</div>
+                <div style="background-color: #fff;">
+                    <div class="row">
+                        <div class=" col-sm-offfset-1 col-md-offset-1 col-lg-offset-1 col-sm-4 col-xs-5 col-md-4 col-lg-4">
+                            <img src="<?php $arr = explode('/',$value->goods_image); echo base_url().'uploads/add_exchange/'.array_pop($arr);?>" class="img-responsive center-block xs-good_img" />
+                        </div>
+                        <div class="col-sm-5 col-xs-5 col-md-5 col-lg-5 show_good_right_all">
+                            <div class="show_good_right_header text-center row"><?=$value->good_name?></div>
+                            <hr>
+                            <div class="col-sm-offfset-2 col-md-offset-2 col-lg-offset-2 show_good_right_content">
+                                <div class="row text-center">
+                                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-8"><span>积分：</span></div>
+                                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"><span class="show_good_right-color"><?=$value->need_integral?></span></div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-8"><span>剩余数量：</span></div>
+                                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"><span class="js_rest_count"><?=$value->rest_count?></span></div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-12"><span>数量：</span></div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12"><button type="button" onclick="count_reduce()">-</button><input type="text" style=" width: 40px; text-align:center;" value="1" class="js_good_count"><button type="button" onclick="count_increase()">+</button></div>
+                                </div>
+                                <div class="row col-sm-offfset-5 col-md-offset-5 col-lg-offset-5 col-xs-1"><button type="button" class="btn btn-danger" onclick="add_show_good('<?=$value->good_id?>')">增加订单</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div >
+                    <div class="show_good_header ">商品介绍</div>
+                    <div class="show_good_introduct"  style="background-color: #fff;">
+                        <?=$value->good_introduce?>
+                    </div>
+                </div>
+                <div >
+                    <div class="show_good_header ">兑换须知</div>
+                    <div class="show_good_introduct"  style="background-color: #fff;">
+                        <p>【兑换方法】兑换仅限官方线上渠道（如官网、手机官网）。</p>
+                        <p>【取消与更改】礼品兑换一经确认，不得取消或更改。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+        }
+    ?>
+</body>
+</html>

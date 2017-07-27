@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+   <div class="room_orderlist_container">
+       <div class="row col-sm-offset-3">
+           <input type="hidden" id = 'curr_time' name="curr_time" >
+           <form class="form-horizontal" role="form" action="<?php echo site_url('manager_room_orderlist/index/').$flag;?>" method="post" style="margin-top: 20px;">
+               <div class="form-group">
+                   <label for="order_id" class="col-sm-2 col-xs-2 control-label">订单号<span class="register-span">*</span></label>
+                   <div class="col-sm-5 col-xs-5">
+                       <input type="text" class="form-control" name="order_id" id="order_id" placeholder="请输入需要查询的订单号" value="<?php set_value('room_id')?>">
+                   </div>
+                   <div class="col-sm-1 col-xs-1">
+                       <button type="submit" class="btn btn-danger">查询</button>
+                   </div>
+                   <div class="col-sm-4 col-xs-4">
+                       <span class="register-span register-js-phone"><?php echo form_error('order_id'); ?></span>
+                   </div>
+               </div>
+           </form>
+       </div>
+       <div class="manager_orderList_header row text-center">
+           <div class=" col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-3 col-xs-3 js_orderList_one">全部订单</div>
+           <div class="col-sm-3 col-xs-3 js_orderList_two">已处理</div>
+           <div class="col-sm-3 col-xs-3 js_orderList_three">未处理</div>
+       </div>
+       <table class="table table-bordered table-hover text-center orderList_table">
+           <thead>
+           <tr>
+               <th  class="text-center">登陆账号</th>
+               <th  class="text-center">订单号</th>
+               <th  class="text-center">日期</th>
+               <th class="text-center">房号</th>
+               <th class="text-center">入住状态</th>
+               <th class="text-center">处理状态</th>
+               <th class="text-center">退订</th>
+           </tr>
+           </thead>
+           <tbody>
+           <?php foreach($data as $value):?>
+           <tr class="js-room-order">
+               <td><?=$value->phone?></td>
+               <td><?=$value->order_id?></td>
+               <td><?=$value->checkIn_time?>--<?=$value->leave_time?></td>
+               <td><?=$value->room_id?></td>
+               <td><a href="javascript:void(0);" onclick="orderStateBtn('<?=$value->order_id?>','<?=$value->order_state?>','<?=$value->room_id?>')"><?=$value->order_state?></a></td>
+               <td><a href="javascript:void(0);" onclick="orderDoneBtn('<?=$value->order_id?>')"><?=$value->done_state?></a></td>
+               <td><a href="javascript:void(0);" onclick="orderDeleteBtn('<?=$value->order_id?>','<?=$value->need_money?>','<?=$value->phone?>','<?=$value->room_id?>')">退订</a></td>
+           </tr>
+           <?php endforeach ;?>
+           </tbody>
+       </table>
+       <div class="manager_set_down"><?php echo $link;?></div>
+   </div>
+</body>
+<?php
+      }
+?>
+<script src="<?php echo base_url();?>application/views/js/orderList.js" type="text/javascript" charset="utf-8"></script>
+<script>
+</script>
+</html>

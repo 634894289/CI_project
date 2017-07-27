@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="<?php echo base_url();?>application/views/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_rn9da7r65o7833di.css"/>
+</head>
+<body>
+    <div class="row">
+        <?php foreach($data as $value):?>
+        <div class="col-sm-6 col-md-6 col-lg-6 showRoom js_room_img_height">
+            <div class="thumbnail">
+                <img src="<?php $arr = explode('/',$value->room_image); echo base_url().'uploads/add_room/'.array_pop($arr);?>" class="img-responsive center-block" />
+                <div class="caption">
+                    <hr />
+                    <div class="row room_content">
+                        <div class="order_room_content row biaoti">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-fangjianyaochi">房间号：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->room_id?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-jiage">价格：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left js_order_price"><?=$value->house_price?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-fang">房型：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->room_type?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-mayishangchengdaizhifudengicon09">楼层：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->floor?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-chuang">床型：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->bed_type?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-4">可住人数：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->number?></div>
+                        </div>
+                        <div class="order_room_content row">
+                            <div class="col-xs-7 col-sm-7 text-center"><span class="iconfont icon-icon-test">是否可以加床：</span></div>
+                            <div class="col-xs-5 col-sm-5 text-left"><?=$value->add_bed?></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary col-sm-offset-5 col-xs-offset-5 col-lg-offset-5 col-md-offset-5 js_room_order" id = room_order onclick="order_room('<?=$value->room_id?>')">预定</button>
+                </div>
+            </div>
+        </div>
+        <?php endforeach ;?>
+    </div>
+    <div class="room_set_down"><?php echo $link;?></div>
+</body>
+<script src="<?php echo base_url();?>application/views/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url();?>application/views/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url();?>application/views/js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $(function () {
+        var imgHeight = parseInt($('.js_room_img_height img:eq(0)').css('height'));
+        $('.js_room_img_height img').css('height',imgHeight);
+    });
+   function order_room (data) {
+      top.location.href  ="http://[::1]/CI/room_order/index/"+data;
+   };
+</script>
+</html>

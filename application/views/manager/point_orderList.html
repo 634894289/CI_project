@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<div class="room_orderlist_container">
+    <div class="row col-sm-offset-3">
+        <input type="hidden" id = 'curr_time' name="curr_time" >
+        <form class="form-horizontal" role="form" action="<?php echo site_url('manager_point_orderlist/index/').$flag;?>" method="post" style="margin-top: 20px;">
+            <div class="form-group">
+                <label for="exchange_id" class="col-sm-2 col-xs-2 control-label">订单号<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-5">
+                    <input type="text" class="form-control" name="exchange_id" id="exchange_id" placeholder="请输入需要查询的订单号" value="<?php set_value('exchange_id')?>">
+                </div>
+                <div class="col-sm-1 col-xs-1">
+                    <button type="submit" class="btn btn-danger">查询</button>
+                </div>
+                <div class="col-sm-4 col-xs-4">
+                    <span class="register-span register-js-phone"><?php echo form_error('exchange_id'); ?></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="manager_orderList_header row text-center">
+        <div class=" col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-3 col-xs-3 js_point_orderList_one">全部订单</div>
+        <div class="col-sm-3 col-xs-3 js_point_orderList_two">已处理</div>
+        <div class="col-sm-3 col-xs-3 js_point_orderList_three">未处理</div>
+    </div>
+    <table class="table table-bordered table-hover text-center orderList_table">
+        <thead>
+        <tr>
+            <th  class="text-center">登陆账号</th>
+            <th  class="text-center">订单号</th>
+            <th  class="text-center">订单提交时间</th>
+            <th class="text-center">商品名称</th>
+            <th class="text-center">商品数量</th>
+            <th class="text-center">联系电话</th>
+            <th class="text-center">联系地址</th>
+            <th class="text-center">处理状态</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $value):?>
+        <tr class="js-room-order">
+            <td><?=$value->phone?></td>
+            <td><?=$value->exchange_id?></td>
+            <td><?=$value->submit_time?></td>
+            <td><?=$value->good_name?></td>
+            <td><?=$value->good_num?></td>
+            <td><?=$value->con_phone?></td>
+            <td><?=$value->address?></td>
+            <td><a href="javascript:void(0);" onclick="pointOrderDoneBtn('<?=$value->exchange_id?>')"><?=$value->done_state?></a></td>
+        </tr>
+        <?php endforeach ;?>
+        </tbody>
+    </table>
+    <div class="manager_set_down"><?php echo $link;?></div>
+</div>
+</body>
+<?php
+      }
+?>
+<script src="<?php echo base_url();?>application/views/js/orderList.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['user_phone'])){
+            redirect(site_url('login'));
+        }
+        else{
+     ?>
+    <div class="container">
+        <input type="hidden" class="js_room_order" value="<?php echo $message;?>">
+        <input type="hidden" class="js_order_balance" value="<?php echo $_SESSION['balance'];?>">
+        <div class="roo_order_header text-center row">预定房间</div>
+        <hr>
+        <div class="row">
+           <div class="col-xs-12 col-sm-8">
+               <span class="add-header">预定信息</span>
+               <div class="xs_left">
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-fangjianyaochi">房间号：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->room_id?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-jiage">价格：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center js_order_price"><?=$data->house_price?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-fang">房型：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->room_type?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-mayishangchengdaizhifudengicon09">楼层：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->floor?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-chuang">床型：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->bed_type?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-4">可住人数：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->number?></div>
+                   </div>
+                   <div class="order_room_message row">
+                       <div class="col-xs-6 col-sm-3"><span class="iconfont icon-icon-test">是否可以加床：</span></div>
+                       <div class="col-xs-6 col-sm-6 text-center"><?=$data->add_bed?></div>
+                   </div>
+               </div>
+           </div>
+            <div class="col-xs-12 col-sm-4 room_order_img">
+                <img src="<?php $arr = explode('/',$data->room_image); echo base_url().'uploads/add_room/'.array_pop($arr);?>" class="img-responsive" />
+            </div>
+        </div>
+        <hr>
+        <span class="add-header">入住信息</span><span>(注：请先填写入住和退房时间)</span>
+        <form class="form-horizontal order_room_form " role="form" action="<?php site_url('room_order/index').'/'.$flag?>" method="post" enctype="multipart/form-data" onsubmit="return checkMoney();">
+            <div class="form-group">
+                <label for="checkIn_time" class="col-sm-2 col-xs-3 control-label text-right">入住时间<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-9">
+                    <input type="date" class="form-control js_checkIn" name="checkIn_time" id="checkIn_time" placeholder="请输入入住时间" value="<?php echo set_value('checkIn_time'); ?>">
+                </div>
+                <div class="col-sm-5 col-xs-12 text-center">
+                    <span  class="register-span register-js-sex"><?php echo form_error('checkIn_time'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="leave_time" class="col-sm-2 col-xs-3 control-label text-right">退房时间<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-9">
+                    <input type="date" class="form-control js_leave" name="leave_time" id="leave_time" placeholder="请输入退房时间" value="<?php echo set_value('leave_time'); ?>">
+                </div>
+                <div class="col-sm-5 col-xs-12 text-center">
+                    <span  class="register-span register-js-ID_card"><?php echo form_error('leave_time'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="con_phone" class="col-sm-2 col-xs-3 control-label text-right">联系电话<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-9">
+                    <input type="text" class="form-control js_order_all" name="con_phone" id="con_phone" placeholder="请输入手机号码" value="<?php echo set_value('con_phone'); ?>" disabled = true>
+                </div>
+                <div class="col-sm-5 col-xs-12 text-center">
+                    <span class="register-span register-js-phone"><?php echo form_error('con_phone'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="con_name" class="col-sm-2 col-xs-3 control-label text-right">联系人姓名<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-9">
+                    <input type="text" class="form-control js_order_all" name="con_name" id="con_name" placeholder="请输入名字" value="<?php echo set_value('con_name'); ?>" disabled = true>
+                </div>
+                <div class="col-sm-5 col-xs-12 text-center">
+                    <span  class="register-span register-js-name"><?php echo form_error('con_name'); ?></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="user_card" class="col-sm-2 col-xs-3 control-label text-right">身份证号码<span class="register-span">*</span></label>
+                <div class="col-sm-5 col-xs-9">
+                    <input type="text" class="form-control js_order_all" name="user_card" id="user_card" placeholder="请输入身份证号码" value="<?php echo set_value('user_card'); ?>" disabled = true>
+                </div>
+                <div class="col-sm-5 col-xs-12 text-center">
+                    <span  class="register-span register-js-ID_card"><?php echo form_error('user_card'); ?></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="col-sm-offset-7 col-xs-offset-6 col-sm-5 col-xs-6">
+                    <div class="col-sm-3 col-xs-6 text-center">
+                        <span>订单总额</span>
+                    </div>
+                    <div  class="col-sm-3 col-xs-6 text-left"  style="color: red">
+                        <span>￥</span>
+                        <span  class="js_need_money"></span>
+                        <input type="hidden" id = 'need_money' name="need_money">
+                        <input type="hidden" id = 'curr_time' name="curr_time" >
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-sm-offset-7 col-xs-offset-7 col-sm-2 col-xs-1">
+                    <button type="submit" class="btn btn-danger js_order_all col-sm-12" disabled=ture>提交订单</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php
+        }
+    ?>
+</body>
+<script>
+    window.onload = function () {
+        var currDate = new Date();
+        var currMonth = (currDate.getMonth() + 1)<10?'0'+ (currDate.getMonth() + 1):(currDate.getMonth() + 1);
+        var currData = currDate.getDate()<10?'0'+ currDate.getDate(): currDate.getDate();
+        var newData = currDate.getFullYear() + '-' + currMonth + '-' + currData;
+        document.getElementById('curr_time').value = newData;
+    }
+</script>
+</html>

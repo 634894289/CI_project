@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div class="show_exchange_header">
+            <span>积分兑换</span>
+        </div>
+        <div class="">
+            <table class="table table-bordered table-hover text-center exchange_table">
+                <thead>
+                <tr>
+                    <th  class="text-center">商品名称</th>
+                    <th  class="text-center">数量</th>
+                    <th  class="text-center">剩余数量</th>
+                    <th class="text-center">单件消费积分</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($data as $value):?>
+                <input type="hidden" class="need_integral" value="<?php echo (int)$value->need_integral * (int)$value->good_num?>">
+                <tr class="js-show-exchange">
+                    <td><?=$value->good_name?></td>
+                    <td><button type="button" onclick="exchange_count_reduce('<?=$value->exchange_id?>','<?=$value->need_integral?>')">-</button><input id="<?=$value->exchange_id?>" type="text" style=" width: 40px;text-align:center;" value="<?=$value->good_num?>"><button type="button" onclick="exchange_count_increase('<?=$value->exchange_id?>','<?=$value->need_integral?>')">+</button></td>
+                    <td  class="show_exchange<?=$value->exchange_id?>"><?=$value->rest_count?></td>
+                    <td ><?=$value->need_integral?></td>
+                    <td><a href="javascript:void(0);" onclick="exchageDeleteBtn('<?=$value->exchange_id?>')">删除</a></td>
+                </tr>
+                <?php endforeach ;?>
+                </tbody>
+            </table>
+            <div class="text-right">
+                <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8 col-sm-2 col-md-2 col-lg-2 ">共<span class="js_good_count"><?=$_SESSION['good_count']?></span>个商品</div>
+                <div class="col-sm-2 col-md-2 col-lg-2">共需消费积分:<span class="need_all_integral"></span>分</div>
+            </div>
+            <div class="text-right">
+                <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8 col-sm-2 col-md-2 col-lg-2 show_exchange_content">您现在可用积分:</div>
+                <div class="col-sm-2 col-md-2 col-lg-2 show_exchange_content"><span class="odd_integral"><?=$_SESSION['odd_integral']?></span>分</div>
+            </div>
+            <div class="text-right">
+                <div class="col-sm-offset-8 col-md-offset-8 col-lg-offset-8 col-sm-2 col-md-2 col-lg-2  show_exchange_content">兑换后剩余积分:</div>
+                <div class="col-sm-2 col-md-2 col-lg-2  show_exchange_content"><span class="rest_integral"></span>分</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xs-6 show_exchange_foot"><a href="javascript: void (0);" class="btn btn-primary col-sm-12 col-xs-12" onclick="cb_check()">&lt;&nbsp;返回选择</a></div>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-xs-6 show_exchange_foot text-right"><a href="javascript:void(0);" class="btn btn-danger col-sm-12 col-xs-12" onclick="delete_all_exchange()">清空订单</a></div>
+            <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-sm-3 col-md-3 col-lg-3 col-xs-6 show_exchange_foot text-left"><span class="col-sm-12 col-xs-12 js_wanning" style="color: #ff0000; display: none">积分不足，无法兑换</span></div>
+            <div class=" col-md-2 col-lg-2 col-xs-6 show_exchange_foot text-right"><a href="javascript:void(0);" class="btn btn-danger col-sm-12 col-xs-12 js_settle_btn" onclick="settleBtn()" >结算&nbsp;&gt;</a></div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        if($('.js_good_count').text() == 0){
+            $('.js_settle_btn').attr('disabled',true);
+        }
+        else {
+            $('.js_settle_btn').attr('disabled',false);
+        }
+    })
+</script>
+</html>

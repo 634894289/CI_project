@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<input type="hidden" class="js_exchange" value="<?php if(!isset($_SESSION)){session_start();}echo isset($_SESSION['exchange_text'])?$_SESSION['exchange_text']:$message;?>">
+<div class="room_orderlist_container">
+    <table class="table table-bordered table-hover text-center orderList_table js_all_room">
+        <thead>
+        <tr>
+            <th  class="text-center">商品名称</th>
+            <th  class="text-center">商品介绍</th>
+            <th  class="text-center">商品图片</th>
+            <th  class="text-center">所需积分</th>
+            <th  class="text-center">商品数目</th>
+            <th class="text-center">操作</th>
+            <th class="text-center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($data as $value):?>
+        <tr>
+            <td><?=$value->good_name?></td>
+            <td class="textOver"><?=$value->good_introduce?></td>
+            <td class="text-center" style="position: relative">
+                <img  style="height: 30px; width: 30px; position: absolute;left: 60px;"src="<?php $arr = explode('/',$value->goods_image); echo base_url().'uploads/add_exchange/'.array_pop($arr);?>" class="img-responsive" />
+            </td>
+            <td><?=$value->need_integral?></td>
+            <td><?=$value->rest_count?></td>
+            <td><button type="button" class="btn btn-danger" onclick="all_exchangeDeleteBtn('<?=$value->good_id?>')">删除</button></td>
+            <td><button type="button" class="btn btn-primary" onclick="all_exchangeRestBtn('<?=$value->good_id?>','<?=$value->good_name?>')">详情</button></td>
+        </tr>
+        <?php endforeach ;?>
+        </tbody>
+    </table>
+    <div class="manager_set_down"><?php echo $link;?></div>
+</div>
+</body>
+<?php
+      }
+?>
+</html>

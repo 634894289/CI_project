@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_uu1fo82hq7yi7ldi.css">
+</head>
+<body>
+    <div class="container">
+        <div class="showPreferential">
+            <?php foreach($data as $value):?>
+            <a href="javascript:void(0);" onclick="show_preferential_content('<?=$value->preferential_id?>')">
+                <div class="row preferential_content">
+                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 preferential_img">
+                        <img src="<?php $arr = explode('/',$value->activity_image); echo base_url().'uploads/add_preferential/'.array_pop($arr);?>" class="img-responsive  pull-right" />
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        <div class="order_room_content row biaoti">
+                            <div class="col-xs-12 col-sm-12 text-center"><span class="preferential-header"><?=$value->activity_name?></span></div>
+                        </div>
+                        <hr>
+                        <div class="order_room_content row preferential_span_size">
+                            <div class="col-xs-5 col-sm-7 text-center"><span class="iconfont icon-iconfonthuodongriqi01">开始时间：</span></div>
+                            <div class="col-xs-7 col-sm-5 text-left js_order_price"><?=$value->activity_start?></div>
+                        </div>
+                        <div class="order_room_content row preferential_span_size">
+                            <div class="col-xs-5 col-sm-7 text-center"><span class="iconfont icon-iconfonthuodongriqi02">结束时间：</span></div>
+                            <div class="col-xs-7 col-sm-5 text-left"><?=$value->activity_end?></div>
+                        </div>
+                        <div class="order_room_content row text-right preferential_more">
+                            <span>更多详细信息........</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <?php endforeach ;?>
+        </div>
+    </div>
+    <div class="point_set_down"><?php echo $link;?></div>
+</body>
+</html>

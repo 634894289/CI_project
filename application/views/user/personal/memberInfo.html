@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body style="background-color: #eeeeee">
+<div class="container ">
+    <div class="row personal">
+        <div class="col-sm-3 col-xs-4 personal_left">
+            <div>
+                <img src="<?php echo base_url();?>application/views/img/c1.jpg" class="img-responsive personal_img" >
+            </div>
+            <div class="personal_left_bottom">
+                <div class="list-group text-center">
+                    <span class="list-group-item oneTitle"> <i class=" glyphicon glyphicon-globe"></i>个人中心</span>
+                    <a href="<?php echo site_url('point_order_list/index');?>" class="list-group-item">积分订单</a>
+                    <a href="<?php echo site_url('order_list/index/1/1');?>" class="list-group-item">住房订单</a>
+                    <a href="<?php echo site_url('stored_value/index/1/1');?>" class="list-group-item">我的余额</a>
+                    <a href="<?php echo site_url('point/index/1/1');?>" class="list-group-item">我的积分</a>
+                    <span class="list-group-item oneTitle"> <i class="glyphicon glyphicon-user"></i>个人信息</span>
+                    <a href="<?php echo site_url('member_info/index');?>" class="list-group-item clicked">个人资料</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-xs-8 js_personal_right personal_right menber_personal_right">
+            <div class="js_personal_orderList">
+                <div class="personal_right_header">
+                    <span>账户信息</span>
+                    <a href="<?php echo site_url('change_info/index');?>" class="pull-right btn btn-primary js_change_info">编辑资料</a>
+                </div>
+                <div class="row personal_right_menberInfo_header js_memberInfo">
+                    <div class="form-group row">
+                        <label for="phone" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2 ">Phone</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="phone" id="phone" readonly="true" value="<?php echo $data->phone;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nicknane1" class="col-sm-2 col-xs-4 control-label text-right vertical_center  col-sm-offset-2 ">昵称</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="nickname1" id="nicknane1" readonly="true" value="<?php echo $data->nickname;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user_name" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2">姓名</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="user_name" id="user_name" readonly="true" value="<?php echo $data->user_name;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sex" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2">性别</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="sex" id="sex" readonly="true" value="<?php echo $data->sex;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ID_card" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2">身份证</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="ID_card" id="ID_card" readonly="true" value="<?php echo $data->ID_card;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="all_integral" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2 ">总共积分</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="all_integral" id="all_integral" readonly="true" value="<?php echo $data->all_integral;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="balance" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2">余额</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="text" class="form-control" name="balance" id="balance" readonly="true" value="<?php echo $data->balance;?>">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-2 col-xs-4 control-label text-right vertical_center col-sm-offset-2 ">密码</label>
+                        <div class="col-sm-5 col-xs-8">
+                            <input type="password" class="form-control" name="password" id="password" readonly="true" value="<?php echo $data->user_password;?>">
+                        </div>
+                        <div class="col-xs-offset-4 col-sm-offset-10 col-sm-2 col-xs-8">
+                            <a href="<?php echo site_url('reset_password')?>" type="button" class="btn btn-primary col-xs-12">修改密码</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

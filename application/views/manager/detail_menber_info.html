@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<div class="row">
+    <div class="col-sm-12 col-xs-12">
+        <span class="add-header "><span class="iconfont icon-icon-test4"></span>查看会员信息</span>
+    </div>
+</div>
+<hr class="add_hr">
+<form class="form-horizontal" role="form" action="<?php echo site_url('change_room/index/').$flag.'/'.$offsert;?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 col-xs-2 control-label">登陆账号<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="phone" id="phone" value="<?php echo $data->phone; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-2 col-xs-2 control-label">昵称<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="nickname" id="nickname" value="<?php echo $data->nickname; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="user_name" class="col-sm-2 col-xs-2 control-label">姓名<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="user_name" id="user_name" value="<?php echo $data->user_name; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sex" class="col-sm-2 col-xs-2 control-label">性别<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="sex" id="sex" value="<?php echo $data->sex; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ID_card" class="col-sm-2 col-xs-2 control-label">身份证号<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="ID_card" id="ID_card" value="<?php echo $data->ID_card; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="all_integral" class="col-sm-2 col-xs-2 control-label">总共积分<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="all_integral" id="all_integral" value="<?php echo $data->all_integral; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="odd_integral" class="col-sm-2 col-xs-2 control-label">剩余积分<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="odd_integral" id="odd_integral" value="<?php echo $data->odd_integral; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="balance" class="col-sm-2 col-xs-2 control-label">余额<span class="register-span">*</span></label>
+        <div class="col-sm-5 col-xs-5">
+            <input type="text" class="form-control" name="balance" id="balance" value="<?php echo $data->balance; ?>" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-xs-offset-6 col-sm-1 col-xs-1">
+            <button type="button" class="btn btn-primary" onclick="menberResetBtn()">返回</button>
+        </div>
+    </div>
+</form>
+</body>
+<?php
+      }
+?>
+<script>
+    if($('.js_add_bed').val() == '是'){
+        $('#yes').attr('checked','checked');
+    }else {
+        $('#no').attr('checked','checked');
+    }
+</script>
+</html>

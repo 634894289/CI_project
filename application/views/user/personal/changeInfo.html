@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+</head>
+<body style="background-color: #eeeeee">
+<div class="container ">
+    <div class="row personal">
+        <div class="col-sm-3 col-xs-4 personal_left">
+            <div>
+                <img src="<?php echo base_url();?>application/views/img/c1.jpg" class="img-responsive personal_img" >
+            </div>
+            <div class="personal_left_bottom">
+                <div class="list-group text-center">
+                    <span class="list-group-item oneTitle"> <i class=" glyphicon glyphicon-globe"></i>个人中心</span>
+                    <a href="<?php echo site_url('point_order_list/index');?>" class="list-group-item">积分订单</a>
+                    <a href="<?php echo site_url('order_list/index/1/1');?>" class="list-group-item">住房订单</a>
+                    <a href="<?php echo site_url('stored_value/index/1/1');?>" class="list-group-item">我的余额</a>
+                    <a href="<?php echo site_url('point/index/1/1');?>" class="list-group-item">我的积分</a>
+                    <span class="list-group-item oneTitle"> <i class="glyphicon glyphicon-user"></i>个人信息</span>
+                    <a href="<?php echo site_url('member_info/index');?>" class="list-group-item clicked">个人资料</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-xs-8 js_personal_right personal_right">
+            <div class="js_personal_orderList">
+                <div class="personal_right_header">
+                    <span>账户信息</span>
+                </div>
+                <div class="row personal_right_menberInfo_header">
+                    <form class="form-horizontal" role="form" action="<?php echo site_url('change_info')?>" method="post">
+                        <div class="form-group">
+                            <label for="nickname" class="col-sm-2 col-xs-3 control-label">昵称<span class="register-span">*</span></label>
+                            <div class="col-sm-5 col-xs-9">
+                                <input type="text" class="form-control" name="nickname" id="nickname" placeholder="请输入昵称" value="<?php echo set_value('nickname'); ?>">
+                            </div>
+                            <div class="col-sm-5 col-xs-12">
+                                <span class="register-span register-js-phone"><?php echo form_error('nickname'); ?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-10 col-xs-offset-7 col-sm-1 col-xs-1">
+                                <button type="submit" class="btn btn-danger">确认修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

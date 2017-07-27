@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/easyui/themes/icon.css">
+    <link href="<?php echo base_url();?>application/views/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/views/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_a1qwq22fasepcik9.css"/>
+
+</head>
+<?php
+        if(!isset($_SESSION)){
+            seeeion_start();
+        }
+        if(!isset($_SESSION['manager_phone'])){
+            redirect(site_url('manager_login'));
+        }
+        else{
+ ?>
+<body class="easyui-layout">
+    <div data-options="region:'north'" style="height:100px;">
+        <img src="<?php echo base_url();?>application/views/img/logo.png" alt="">
+        <span class="north_header">欢迎使用酒店后台管理系统</span>
+        <span style="font-size: 16px;font-weight: bold; margin-left: 180px;"><span>管理员，您好</span><a href="javascript:void(0);" class="js_exits" style="color: #df8a13;  margin-left: 20px;">退出</a></span>
+        <img src="<?php echo base_url();?>application/views/img/banner.jpg" alt = "" class="north_img" >
+    </div>
+    <div data-options="region:'west',title:'酒店管理系统'" style="width:170px;">
+        <div id="menu" class="easyui-accordion" style="width:170px;height:auto; margin-left: -20px; border: none;">
+            <div title="会员信息" data-options="iconCls:'icon-edit'"  class="west_menu">
+                <div class="list-group list_group" style="border: none;">
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('all_menber_info/index/')?>" name="allMenber"><span class="iconfont icon-shangpin2"></span>所有会员信息</a>
+                </div>
+            </div>
+            <div title="订单管理" data-options="iconCls:'icon-edit'" class="west_menu">
+                <div class="list-group list_group" >
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('manager_room_orderlist/index/1/1')?>" name="orderList"><span class="iconfont icon-dingdan"></span>住房订单</a>
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('manager_point_orderlist/index/1/1')?>" name="balanceList"><span class="iconfont icon-order"></span>积分订单</a>
+                </div>
+            </div>
+            <div title="住房管理" data-options="iconCls:'icon-edit'" class="west_menu">
+                <div class="list-group list_group" style="border: none;">
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('all_room/index/')?>" name="allRoom"><span class="iconfont icon-xinfang"></span>所有住房信息</a>
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('add_room')?>" name="addRoom"><span class="iconfont icon-yanfang"></span>添加住房信息</a>
+                </div>
+            </div>
+            <div title="优惠管理" data-options="iconCls:'icon-edit'" class="west_menu">
+                <div class="list-group list_group" style="border: none;">
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('all_preferential/index/')?>" name="allPreferential"><span class="iconfont icon-youhui1"></span>所有优惠信息</a>
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('add_preferential')?>" name="addPreferential"><span class="iconfont icon-youhui2"></span>添加优惠信息</a>
+                </div>
+            </div>
+            <div title="商品管理" data-options="iconCls:'icon-edit'"  class="west_menu">
+                <div class="list-group list_group" style="border: none;">
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('all_exchange/index/')?>" name="allExchange"><span class="iconfont icon-shangpin2"></span>所有商品信息</a>
+                    <a href="javascript:void(0);" class="list-group-item text-center" title="<?php echo site_url('add_exchange')?>" name="addExchange"><span class="iconfont icon-shangpin1"></span>添加商品信息</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tt" class="easyui-tabs" data-options="region:'center',fit:true" style="padding:5px;background:#eee; margin-left: -7px;margin-top: -7px; height: 1500px">
+    </div>
+</body>
+<?php
+      }
+?>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/easyui/jquery.easyui.min.js"></script>
+<script src="<?php echo base_url();?>application/views/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url();?>application/views/js/fontSize.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    $('.js_exits').click(function () {
+        var $url = "<?php echo site_url('manager_login/lg_out');?>";
+        $.ajax({
+            type:"post",
+            url:$url,
+            dataType:"text",
+            data:{flag: true},
+            success:function(data){
+                location.href = "<?php echo site_url('manager_login');?>";
+                return true;
+            },
+            error:function(err){
+                alert('Failed');
+                return false;
+            }
+        });
+    });
+</script>
+</html>
